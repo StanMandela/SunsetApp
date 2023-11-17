@@ -20,7 +20,7 @@ class Home extends BaseController
     }  
     public function index()
     {
-        return view('dash');
+        return view('dash_dash');
     }
 }
     

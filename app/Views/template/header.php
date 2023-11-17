@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Focus - Bootstrap Admin Dashboard </title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../../public/assets/images/favicon.png">
-    <link rel="stylesheet" href="../../public/assets/vendor/owl-carousel/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../../public/assets/vendor/owl-carousel/css/owl.theme.default.min.css">
-    <link href="../../public/assets/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
-    <link href="../../public/assets/css/style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url('assets/images/favicon.png');?>">
+    <link rel="stylesheet" href="../../assets/vendor/owl-carousel/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../../assets/vendor/owl-carousel/css/owl.theme.default.min.css">
+    <link href="../../assets/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
+    <link href="../../assets/css/style.css" rel="stylesheet">
 
 
 
@@ -44,9 +44,9 @@
         ***********************************-->
         <div class="nav-header">
             <a href="index.html" class="brand-logo">
-                <img class="logo-abbr" src="../../public/assets/images/logo.png" alt="">
-                <img class="logo-compact" src="../../public/assets/images/logo-text.png" alt="">
-                <img class="brand-title" src="../../public/assets/images/logo-text.png" alt="">
+                <img class="logo-abbr" src="../../assets/images/logo.png" alt="">
+                <img class="logo-compact" src="../../assets/images/logo-text.png" alt="">
+                <img class="brand-title" src="../../assets/images/logo-text.png" alt="">
             </a>
 
             <div class="nav-control">
@@ -90,6 +90,8 @@
                                         <li class="media dropdown-item">
                                             <span class="success"><i class="ti-user"></i></span>
                                             <div class="media-body">
+                                            <?php echo base_url('assets/images/favicon.png');?>
+                                                <img src="<?= base_url()?>/assets/images/favicon.png" alt="image">
                                                 <a href="#">
                                                     <p><strong>Martin</strong> has added a <strong>customer</strong> Successfully
                                                     </p>
@@ -167,3 +169,4 @@
         <!--**********************************
             Header end ti-comment-alt
         ***********************************-->
+

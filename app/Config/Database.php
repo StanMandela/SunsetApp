@@ -29,7 +29,7 @@ class Database extends Config
         'hostname'     => 'localhost',
         'username'     => 'developer',
         'password'     => '@Stanley101',
-        'database'     => 'dawati_db',
+        'database'     => 'sunset_bar',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
         'pConnect'     => false,
