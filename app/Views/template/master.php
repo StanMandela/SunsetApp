@@ -13,6 +13,7 @@
     <link href="../../assets/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
     <link href="../../assets/css/style.css" rel="stylesheet">
 
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 
 
 </head>
@@ -54,6 +55,7 @@
                     <span class="line"></span><span class="line"></span><span class="line"></span>
                 </div>
             </div>
+
         </div>
         <!--**********************************
             Nav header end
@@ -332,6 +334,7 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
+    
     <script src="../../assets/vendor/global/global.min.js"></script>
     <script src="../../assets/js/quixnav-init.js"></script>
     <script src="../../assets/js/custom.min.js"></script>

@@ -30,6 +30,8 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
+    <script src="https://unpkg.com/vue@next"></script>
+
     <script src="../../assets/vendor/global/global.min.js"></script>
     <script src="../../assets/js/quixnav-init.js"></script>
     <script src="../../assets/js/custom.min.js"></script>

@@ -13,6 +13,8 @@
     <link href="../../assets/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
     <link href="../../assets/css/style.css" rel="stylesheet">
 
+    <script src="https://unpkg.com/vue@next"></script>
+
 
 
 </head>

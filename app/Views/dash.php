@@ -577,5 +577,6 @@
         <!--**********************************
             Content body end
         ***********************************-->
-
+<!-- Import the specific JS file -->
+<?= script('vue/products.vue') ?>
  <?= $this->include('template/footer'); ?>

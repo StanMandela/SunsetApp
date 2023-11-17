@@ -17,24 +17,13 @@ class Users extends BaseController
     public function insertData()
 
     {
-
-     
-
         // using queryBuilder
-
- 
-
         $data=[ 'name'=>$this->request->getVar('name'),
 
                 'email'=>$this->request->getVar('email'),
 
                 'password'=>$this->request->getVar('password')
-
- 
-
               ];
-
- 
 
         $db_connection=\Config\Database::connect();
 
