@@ -14,7 +14,7 @@ class DailySales extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'item_id' => [
+            'product_id' => [
                 'type'           => 'VARCHAR',
                 'constraint'     => 64,
             ],
@@ -36,7 +36,7 @@ class DailySales extends Migration
             ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->addUniqueKey(['item_id']);
+        $this->forge->addUniqueKey(['product_id']);
         $this->forge->createTable('daily_sales');
     }
 
@@ -44,6 +44,5 @@ class DailySales extends Migration
     {
         $this->forge->dropTable('daily_sales'); 
     
-        //
     }
 }

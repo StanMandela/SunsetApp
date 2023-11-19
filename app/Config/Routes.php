@@ -5,7 +5,30 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
+
+//Users
 $routes->get('/', 'Home::index');
 $routes->get('/users', 'Users::index');
+
+//Products
 $routes->get('/products', 'Products::index');
+$routes->post('/products/add', 'Products::create');
+$routes->get('/products/show/(:segment)', 'Products::show/$1');
+$routes->post('/products/edit/(:segment)', 'Products::update/$1');
+$routes->delete('/products/delete/(:segment)', 'Products::delete/$1');
+
+
+// Item Types 
+$routes->get('/itemtypes', 'ItemsTypes::index');
+$routes->post('/itemtype/add', 'ItemsTypes::create');
+$routes->get('/itemtypes/show/(:segment)', 'ItemsTypes::show/$1');
+$routes->post('/itemtypes/edit/(:segment)', 'ItemsTypes::update/$1');
+$routes->delete('/itemtypes/delete/(:segment)', 'ItemsTypes::delete/$1');
+
+// Sales
+$routes->get('/sales', 'Sales::index');
+$routes->post('/sales/add', 'Sales::create');
+$routes->get('/sales/show/(:segment)', 'Sales::show/$1');
+$routes->post('/sales/edit/(:segment)', 'Sales::update/$1');
+$routes->delete('/sales/delete/(:segment)', 'Sales::delete/$1');
 

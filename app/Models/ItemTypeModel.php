@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ProductsModel extends Model
+class ItemTypeModel extends Model
 {
-    protected $table            = 'products';
+    protected $table            = 'item_types';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['product_id','description','product_name','item_type','created_at'];
+    protected $allowedFields    = ['type_id','type_name','description'];
 
     // Dates
     protected $useTimestamps = false;
@@ -23,21 +23,17 @@ class ProductsModel extends Model
 
     // Validation
     protected $validationRules      = [
-        'description' => [
-            'label' => 'Descriptions',
+        'type_name' => [
+            'label' => 'Type Name',
             'rules' => 'required|max_length[250]'
         ],
-        'product_id' => [
+        'type_id' => [
             'label' => 'Item Id',
             'rules' => 'required|greater_than_equal_to[0]'
         ],
-        'product_name' => [
-            'label' => 'Product Name',
-            'rules' => 'required|max_length[250]'
-        ],
-        'item_type' => [
-            'label' => 'Item Type',
-            'rules' => 'required|greater_than_equal_to[0]'
+        'description' => [
+            'label' => 'Item Name',
+            'rules' => 'required|max_length[250]|alpha_space'
         ],
     ];
     protected $validationMessages   = [];

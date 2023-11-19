@@ -14,7 +14,7 @@ class DailyItemQuanties extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'item_id' => [
+            'product_id' => [
                 'type'           => 'VARCHAR',
                 'constraint'     => 64,
             ],
@@ -26,13 +26,13 @@ class DailyItemQuanties extends Migration
                 'type'           => 'INT',
                 'default'        => '0',
             ],
-            'updated_date' => [
-                'type'           => 'DATETIME',
+            'updated_at' => [
+                'type'        => 'DATETIME',
                 'null'           => true,
             ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->addUniqueKey(['item_id']);
+        $this->forge->addUniqueKey(['product_id']);
         $this->forge->createTable('daily_quantities');
     }
 
@@ -40,6 +40,5 @@ class DailyItemQuanties extends Migration
     {
         $this->forge->dropTable('daily_quantities'); 
     
-        //
     }
 }

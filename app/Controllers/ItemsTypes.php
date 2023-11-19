@@ -1,47 +1,26 @@
 <?php
 
 namespace App\Controllers;
-use App\Models\ProductsModel;
-use App\Controllers\BaseController;
 
-class Products extends BaseController
+use App\Controllers\BaseController;
+use App\Models\ItemTypeModel;
+
+class ItemsTypes extends BaseController
 {
     protected $model;
 
     public function __construct()
     {
         // Load the model in the constructor
-        $this->model = new ProductsModel();
+        $model = new ItemTypeModel();
     }
-
     public function index()
     {
-        $this->model = new ProductsModel();
+        $this->model = new ItemTypeModel();
         $items=$this->model->findAll();
         return $this->response->setJSON($items);
     }
- 
-    /**
-     * Present a view of resource objects
-     *
-     * @return mixed
-     */
-    public function getProducts()
-    {  
-        $products =$model->orderBy('created_at', 'asc')->findAll();
-
-        return $this->response->setJSON($products);
-    }
-     /**
-     * Present a view to present a new single resource object
-     *
-     * @return mixed
-     */
-    public function new()
-    {
-        return view('projects/create');
-    }
-    /**
+       /**
      * Process the creation/insertion of a new resource object.
      * This should be a POST.
      *
@@ -49,9 +28,10 @@ class Products extends BaseController
      */
     public function create()
     {
-         $model = new ProductsModel();
+        $model = new ItemTypeModel();
+
          // Get the last inserted item_id
-         $lastItemId = $model->selectMax('product_id')->get()->getRow()->product_id;
+         $lastItemId = $model->selectMax('type_id')->get()->getRow()->type_id;
          //var_dump($lastItemId);
 
          // Increment the item_id
@@ -59,12 +39,11 @@ class Products extends BaseController
 
         $data =[   
             'description'    => $this->request->getPost('description'),
-            'product_name'    => $this->request->getPost('product_name'),
-            'item_type'    => $this->request->getPost('item_type'),
-            'product_id'    => $newItemId,            
+            'type_name'    => $this->request->getPost('type_name'),
+            'type_id'    => $newItemId,            
         ];
          
-        if ($this->model->insert($data) === false)
+        if ($model->insert($data) === false)
         {
             //return redirect()->back()->withInput()->with('errors', $this->model->errors());
             $message= $this->model->errors();
@@ -74,15 +53,13 @@ class Products extends BaseController
             );
             return $this->response->setJSON($error);
         }
- 
-        //return redirect()->back()->with('success', 'Saved Successfully!');
         $data= array(
-            "status"=> 200,
+            "status"=> true,
             "message"=>"Saved Successfully!"
         );
         return $this->response->setJSON($data);
     }
-    /**
+      /**
      * Process the updating, full or partial, of a specific resource object.
      * This should be a POST.
      *
@@ -92,10 +69,10 @@ class Products extends BaseController
      */
     public function update($id = null)
     {
-        $model = new ProductsModel();
+        $model = new ItemTypeModel();
         $data =[   
             'description'    => $this->request->getPost('description'),
-            'product_name'    => $this->request->getPost('product_name'),
+            'type_name'    => $this->request->getPost('type_name'),
         ];
  
         if ($model->where('id', $id)->set($data)->update() === false)
@@ -115,7 +92,7 @@ class Products extends BaseController
                 return $this->response->setJSON($data); 
             
      }
-     /**
+    /**
      * Present a view to present a specific resource object
      *
      * @param mixed $id
@@ -124,7 +101,7 @@ class Products extends BaseController
      */
     public function show($id = null)
     {   
-        $model = new ProductsModel();
+        $model = new ItemTypeModel();
         $project = $model->find($id);
         if ($project === null){
             $message= $model->errors();
@@ -143,7 +120,7 @@ class Products extends BaseController
         return $this->response->setJSON($data); 
      
     }
-     /**
+    /**
      * Process the deletion of a specific resource object
      *
      * @param mixed $id
@@ -152,7 +129,7 @@ class Products extends BaseController
      */
     public function delete($id = null)
     {
-        $model = new ProductsModel();
+        $model = new ItemTypeModel();
         $status=$model->delete($id);
         if ($status === false)
         {
