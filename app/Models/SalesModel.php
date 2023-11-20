@@ -6,13 +6,13 @@ use CodeIgniter\Model;
 
 class SalesModel extends Model
 {
-    protected $table            = 'sales';
+    protected $table            = 'daily_sales';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['product_id','quantity','price','item_type','created_at'];
 
     // Dates
     protected $useTimestamps = false;
