@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UsersModel extends Model
+class PricesModel extends Model
 {
-    protected $table            = 'users';
+    protected $table            = 'prices';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['name','email','password','login_at'];
+    protected $allowedFields    = ['product_id','price','from_date','to_date','updated_on'];
 
     // Dates
     protected $useTimestamps = false;
@@ -23,18 +23,23 @@ class UsersModel extends Model
 
     // Validation
     protected $validationRules      = [
-        'email' => [
-            'label' => 'Email',
-            'rules' => 'required|max_length[64]|valid_email|is_unique[email]'
-        ],
-        'password' => [
-            'label' => 'Password',
-            'rules' => 'required|max_length[32]'
-        ],
-        'user_type' => [
-            'label' => 'User Type',
+        'product_id' => [
+            'label' => 'Product Id',
             'rules' => 'required|greater_than_equal_to[0]'
         ],
+        'price' => [
+            'label' => 'Price',
+            'rules' => 'required|greater_than_equal_to[0]'
+        ],
+        'from_date' => [
+            'label' => 'From Date',
+            'rules' => 'required'
+        ],
+        'updated_on' => [
+            'label' => 'Updated on ',
+            'rules' => 'required'
+        ],
+      
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;

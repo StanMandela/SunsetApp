@@ -32,3 +32,10 @@ $routes->get('/sales/show/(:segment)', 'Sales::show/$1');
 $routes->post('/sales/edit/(:segment)', 'Sales::update/$1');
 $routes->delete('/sales/delete/(:segment)', 'Sales::delete/$1');
 
+//Prices
+$routes->get('/prices', 'Prices::index');
+$routes->post('/prices/add', 'Prices::create');
+$routes->get('/prices/show/(:segment)', 'Prices::show/$1');
+$routes->post('/prices/edit/(:segment)', 'Prices::update/$1');
+$routes->delete('/prices/delete/(:segment)', 'Prices::delete/$1');
+

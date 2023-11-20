@@ -14,7 +14,7 @@ class Prices extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'item_id' => [
+            'product_id' => [
                 'type'           => 'INT',
                 'default'        => '0',
             ],

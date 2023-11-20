@@ -37,4 +37,13 @@ class SalesModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    // Custom functions
+    public function saleExists($productId, $saleDate)
+    {
+        return $this->where('product_id', $productId)
+                    ->where('DATE(created_at)', $saleDate)
+                    ->countAllResults() > 0;
+                    
+    }
 }

@@ -50,9 +50,9 @@ class Products extends BaseController
     public function create()
     {
          $model = new ProductsModel();
+        
          // Get the last inserted item_id
          $lastItemId = $model->selectMax('product_id')->get()->getRow()->product_id;
-         //var_dump($lastItemId);
 
          // Increment the item_id
          $newItemId = $lastItemId + 1 ?? 1 ;

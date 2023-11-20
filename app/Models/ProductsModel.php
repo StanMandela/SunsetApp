@@ -54,4 +54,16 @@ class ProductsModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    // functions
+    public function getProductDetails($productId)
+    {
+        $product = $this->find($productId);
+
+        return $product 
+        ? ['item_type' => $product['item_type'], 'product_name' => $product['product_name']] 
+        : null;
+    }
+
+ 
 }
