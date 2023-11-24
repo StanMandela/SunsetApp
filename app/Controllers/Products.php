@@ -28,6 +28,7 @@ class Products extends BaseController
      */
     public function getProducts()
     {  
+        $model = new ProductsModel();
         $products =$model->orderBy('created_at', 'asc')->findAll();
 
         return $this->response->setJSON($products);
@@ -56,12 +57,13 @@ class Products extends BaseController
 
          // Increment the item_id
          $newItemId = $lastItemId + 1 ?? 1 ;
-
+         $timestamp = date('Y-m-d h:i:s');
         $data =[   
             'description'    => $this->request->getPost('description'),
             'product_name'    => $this->request->getPost('product_name'),
             'item_type'    => $this->request->getPost('item_type'),
-            'product_id'    => $newItemId,            
+            'product_id'    => $newItemId,  
+            'created_at'    => $timestamp
         ];
          
         if ($this->model->insert($data) === false)
