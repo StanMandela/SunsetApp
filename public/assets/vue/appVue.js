@@ -1,3 +1,17 @@
+// Get the current hostname
+const hostname = window.location.hostname;
+
+// Set the base URL based on the hostname
+let baseURL = '';
+
+if (hostname === 'localhost' || hostname === '127.0.0.1') {
+  // Development environment
+  baseURL = 'http://localhost:8080';
+} else if (hostname === 'sunset.localhost') {
+  // Production-like environment
+  baseURL = 'http://sunset.localhost';
+}
+
 new Vue({
     el: '#app',
     data: {
@@ -10,7 +24,7 @@ new Vue({
     methods: {
       populateTable() {
 
-        fetch('http://sunset.localhost/products')
+        fetch(baseURL+'/products')
                 .then(response => response.json())
                 .then(data => {
                     // Update the products data

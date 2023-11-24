@@ -11,6 +11,11 @@ $routes->get('/', 'Home::index');
 $routes->get('/loadProducts', 'Home::products');
 $routes->get('/users', 'Users::index');
 
+$routes->group('api', ['filter' => 'cors'], function ($routes) {
+    // Your API routes go here...
+    $routes->get('/products', 'Products::index');
+
+});
 //Products
 $routes->get('/products', 'Products::index');
 $routes->post('/products/add', 'Products::create');
