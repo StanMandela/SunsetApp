@@ -15,11 +15,9 @@ new Vue({
                 .then(data => {
                     // Update the products data
                     this.products = data;
-                    //console.log(this.products)
+                    console.log(data)
                 })
-                .catch(error => {
-                    console.error('Error fetching products:', error);
-                });
+                
         const tableBody = document.querySelector('#example tbody');
 
         this.products.forEach((product, index) => {

@@ -9,8 +9,8 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Hi, welcome back!</h4>
-                    <span class="ml-1">Datatable</span>
+                    <h4>{{message}}</h4>
+                    <h4>{{products}}</h4>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -27,7 +27,7 @@
             <div   class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Basic Datatable</h4>
+                        <h4 class="card-title">Products Datatable</h4>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -38,7 +38,7 @@
                                         <th>Product Name</th>
                                         <th>Description</th>
                                         <th>Item Type</th>
-                                        <th>CReated At</th>
+                                        <th>Created At</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -57,7 +57,7 @@
                                         <th>Product Name</th>
                                         <th>Description</th>
                                         <th>Item Type</th>
-                                        <th>CReated At</th>
+                                        <th>Created At</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -74,5 +74,5 @@
         ***********************************-->
 
  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-<script type="text/javascript" src="<?php echo base_url('assets/vue/appVue.js'); ?>"></script>
+<script type="text/javascript" src="../../assets/vue/appVue.js"></script>
 <?php include(APPPATH . 'Views/template/footer.php'); ?>
