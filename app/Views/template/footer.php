@@ -41,6 +41,9 @@
     <script src="../../assets/vendor/raphael/raphael.min.js"></script>
     <script src="../../assets/vendor/morris/morris.min.js"></script>
 
+  <!-- Datatable -->
+    <script src="../../assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../../assets/js/plugins-init/datatables.init.js"></script>
 
     <script src="../../assets/vendor/circle-progress/circle-progress.min.js"></script>
     <script src="../../assets/vendor/chart.js/Chart.bundle.min.js"></script>

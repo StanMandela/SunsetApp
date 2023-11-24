@@ -6,9 +6,7 @@ class Home extends BaseController
 {
      /*Load model*/
      function __construct() {
-       //parent::__construct();
-        $this->data ['title']       = "Dawati - Admin";
-        $this->data ['description'] = "";
+   
         
      
         
@@ -20,7 +18,21 @@ class Home extends BaseController
     }  
     public function index()
     {
-        return view('products/products_index');
+        //return view('products/products_index');
+       return view('products/table');
+      // return view('dash');
+
+
+
     }
+    public function products()
+    {
+       // return view('products/products_index');
+        return view('products/products_index');
+
+
+
+    }
+
 }
     

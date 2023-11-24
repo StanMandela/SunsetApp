@@ -2,6 +2,7 @@ var myApp = new Vue({
   el: "#app",
   data() {
       return {
+        message:"Helloe ",
           active_students: 0,
           active_teachers:0,
           courses_created: 0,

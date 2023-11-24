@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="../../assets/vendor/owl-carousel/css/owl.carousel.min.css">
     <link rel="stylesheet" href="../../assets/vendor/owl-carousel/css/owl.theme.default.min.css">
     <link href="../../assets/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
+     <!-- Datatable -->
+     <link href="../../assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+
     <link href="../../assets/css/style.css" rel="stylesheet">
 
     <script src="https://unpkg.com/vue@next"></script>
