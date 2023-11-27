@@ -53,19 +53,24 @@ class Products extends BaseController
          $model = new ProductsModel();
         
          // Get the last inserted item_id
-         $lastItemId = $model->selectMax('product_id')->get()->getRow()->product_id;
+        // $lastItemId = $model->selectMax('product_id')->get()->getRow()->product_id;
+         $lastItemId = $model->select('product_id')->orderBy('CAST(product_id AS SIGNED)', 'DESC')->limit(1)->get()->getRow()->product_id;
 
+       
          // Increment the item_id
          $newItemId = $lastItemId + 1 ?? 1 ;
          $timestamp = date('Y-m-d h:i:s');
-        $data =[   
+          // Retrieve JSON data using getJSON
+               
+        $data = [   
             'description'    => $this->request->getPost('description'),
             'product_name'    => $this->request->getPost('product_name'),
             'item_type'    => $this->request->getPost('item_type'),
             'product_id'    => $newItemId,  
             'created_at'    => $timestamp
         ];
-         
+          
+
         if ($this->model->insert($data) === false)
         {
             //return redirect()->back()->withInput()->with('errors', $this->model->errors());

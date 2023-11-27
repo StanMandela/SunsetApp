@@ -13,6 +13,8 @@
     <link href="../../assets/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
      <!-- Datatable -->
      <link href="../../assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+   <!-- Toastr -->
+   <link rel="stylesheet" href="../../assets/vendor/toastr/css/toastr.min.css">
 
     <link href="../../assets/css/style.css" rel="stylesheet">
 

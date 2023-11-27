@@ -64,6 +64,11 @@
 
 
     <script src="../../assets/js/dashboard/dashboard-1.js"></script>
+    <!-- Toastr -->
+    <script src="../../assets/vendor/toastr/js/toastr.min.js"></script>
+
+    <!-- All init script -->
+    <script src="../../assets/js/plugins-init/toastr-init.js"></script>
 
 </body>
 
