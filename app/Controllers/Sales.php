@@ -49,7 +49,7 @@ class Sales extends BaseController
 
     // Set the rules in the validation library
     $validation->setRules($rules);
- // Perform the validation
+     // Perform the validation
     if ($validation->run($this->request->getPost())) {
         // Validation passed, proceed with your logic
         $productId = $this->request->getPost('product_id');
@@ -95,18 +95,30 @@ class Sales extends BaseController
                 // Create a new sale record
               
                 // Call the method from the service
-                $price = $services->showPrice("1");
-        
+                $price = $services->showPrice("1"); 
+                if($price['status'] === 404){
+                    $error= array(
+                        "status"=> $price['status'],
+                        "message"=>$price['message']
+                    );
+                    return $this->response->setJSON($error);
+                }
+               
                 // You can format the time if needed
                 $timestamp = date('Y-m-d h:i:s');
+               $amount= $this->request->getPost('quantity')* $price['price'];
+             
                 $data =[   
                     'product_id'    => $this->request->getPost('product_id'),
                     'quantity'    => $this->request->getPost('quantity'),
                     'price'    => $price['price'],
                     'item_type'    =>$product['item_type'] , 
                     'created_at'=> $timestamp,
+                    'amount'=> $amount
                 
                     ];
+
+                   
             
             if ($this->model->insert($data) === false)
             {

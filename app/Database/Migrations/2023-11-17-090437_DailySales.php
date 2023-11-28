@@ -26,6 +26,10 @@ class DailySales extends Migration
                 'type'           => 'INT',
                 'constraint'     => '0',
             ],
+            'amount' => [
+                'type'           => 'INT',
+                'constraint'     => '0',
+            ],
             'item_type' => [
                 'type'           => 'INT',
                 'default'        => '0',

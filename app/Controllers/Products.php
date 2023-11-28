@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\ProductsModel;
+use App\Models\ItemTypeModel;
 use App\Controllers\BaseController;
 
 class Products extends BaseController
@@ -29,9 +30,11 @@ class Products extends BaseController
     public function getProducts()
     {  
         $model = new ProductsModel();
-        $products =$model->orderBy('created_at', 'asc')->findAll();
+        $itemTypeModel = new ItemTypeModel();
+        $itemName= $model->getProductName();
+        //$products =$model->orderBy('created_at', 'asc')->findAll();
 
-        return $this->response->setJSON($products);
+        return $this->response->setJSON($itemName);
     }
      /**
      * Present a view to present a new single resource object
@@ -54,12 +57,12 @@ class Products extends BaseController
         
          // Get the last inserted item_id
         // $lastItemId = $model->selectMax('product_id')->get()->getRow()->product_id;
-         $lastItemId = $model->select('product_id')->orderBy('CAST(product_id AS SIGNED)', 'DESC')->limit(1)->get()->getRow()->product_id;
-
+         $lastItemId = $model->select('product_id')->orderBy('CAST(product_id AS SIGNED)', 'DESC')->limit(1)->get()->getRow()->product_id ?? null;
+      
        
          // Increment the item_id
-         $newItemId = $lastItemId + 1 ?? 1 ;
-         $timestamp = date('Y-m-d h:i:s');
+         $newItemId = $lastItemId  + 1 ?? 1 ;
+         $timestamp = date('Y-m-d h:i:s')   ;
           // Retrieve JSON data using getJSON
                
         $data = [   

@@ -8,8 +8,8 @@
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon icon-single-04"></i><span class="nav-text">Dashboard</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="<?= base_url('sales') ?>">Sales</a></li>
-                            <li><a href="<?= base_url('products') ?>">Products</a></li>
+                            <li><a href="<?= base_url('loadSales') ?>">Sales</a></li>
+                            <li><a href="<?= base_url('loadProducts') ?>">Products</a></li>
                         </ul>
                     </li>
                     <li class="nav-label">Apps</li>

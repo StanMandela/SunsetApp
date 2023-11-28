@@ -64,6 +64,12 @@ class ProductsModel extends Model
         ? ['item_type' => $product['item_type'], 'product_name' => $product['product_name']] 
         : null;
     }
-
+    public function getProductName()
+    {
+        // Assuming 'product_type' is the foreign key in ProductsModel and 'item_id' is the primary key in ItemTypeModel
+        $this->select('products.*, item_types.type_name AS product_type_name')
+             ->join('item_types', 'item_types.type_id = products.item_type', 'left');
+        return $this->orderBy('created_at', 'asc')->findAll();
+    }
  
 }

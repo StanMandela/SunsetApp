@@ -23,14 +23,16 @@ class Home extends BaseController
       // return view('dash');
 
 
-
+      
     }
     public function products()
     {
-       // return view('products/products_index');
-        return view('products/products_index');
+        return view('dashboard/products_dash');
 
-
+    }
+    public function sales()
+    {
+        return view('dashboard/sales_dash');
 
     }
 

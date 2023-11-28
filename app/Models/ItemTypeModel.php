@@ -50,4 +50,22 @@ class ItemTypeModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+     /**
+     * Get the name of an item by item ID.
+     *
+     * @param int|string $itemId
+     * @return string|null
+     */
+    public function getItemNameById($itemId)
+    {
+        // Assuming 'item_id' is the column containing item IDs and 'item_name' is the column containing item names
+        $query = $this->select('type_name')->where('type_id', $itemId)->get();
+
+        if ($query->getResult()) {
+            return $query->getRow()->type_name;
+        }
+
+        return null;
+    }
 }

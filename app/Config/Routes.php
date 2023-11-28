@@ -9,6 +9,7 @@ use CodeIgniter\Router\RouteCollection;
 //Users
 $routes->get('/', 'Home::index');
 $routes->get('/loadProducts', 'Home::products');
+$routes->get('/loadSales', 'Home::sales');
 $routes->get('/users', 'Users::index');
 
 $routes->group('api', ['filter' => 'cors'], function ($routes) {
@@ -19,6 +20,7 @@ $routes->group('api', ['filter' => 'cors'], function ($routes) {
 //Products
 $routes->get('/products', 'Products::index');
 $routes->post('/products/add', 'Products::create');
+$routes->get('/products/list', 'Products::getProducts');
 $routes->get('/products/show/(:segment)', 'Products::show/$1');
 $routes->post('/products/edit/(:segment)', 'Products::update/$1');
 $routes->delete('/products/delete/(:segment)', 'Products::delete/$1');
