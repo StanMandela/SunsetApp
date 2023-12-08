@@ -6,8 +6,10 @@ use CodeIgniter\Database\Migration;
 
 class DailyItemQuanties extends Migration
 {
+    protected $group = 'default';
     public function up()
     {
+
         $this->forge->addField([
             'id' => [
                 'type'           => 'INT',
@@ -18,11 +20,19 @@ class DailyItemQuanties extends Migration
                 'type'           => 'VARCHAR',
                 'constraint'     => 64,
             ],
-            'quantity' => [
+            'old_quantity' => [
                 'type'           => 'INT',
                 'constraint'     => '0',
             ],
-            'item_type' => [
+            'new_quantity' => [
+                'type'           => 'INT',
+                'constraint'     => '0',
+            ],
+            'total_quantity' => [
+                'type'           => 'INT',
+                'constraint'     => '0',
+            ],
+            'action_type' => [
                 'type'           => 'INT',
                 'default'        => '0',
             ],
@@ -32,7 +42,6 @@ class DailyItemQuanties extends Migration
             ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->addUniqueKey(['product_id']);
         $this->forge->createTable('daily_quantities');
     }
 

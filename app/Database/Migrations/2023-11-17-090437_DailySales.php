@@ -6,8 +6,10 @@ use CodeIgniter\Database\Migration;
 
 class DailySales extends Migration
 {
+    protected $group = 'default';
     public function up()
     {
+
         $this->forge->addField([
             'id' => [
                 'type'           => 'INT',
@@ -40,7 +42,6 @@ class DailySales extends Migration
             ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->addUniqueKey(['product_id']);
         $this->forge->createTable('daily_sales');
     }
 

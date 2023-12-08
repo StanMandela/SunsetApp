@@ -58,7 +58,8 @@ class ProductsModel extends Model
     // functions
     public function getProductDetails($productId)
     {
-        $product = $this->find($productId);
+        //$product = $this->find($productId); // searched using the id column
+        $product = $this->where('product_id', $productId)->first(); //searches using the specified column
 
         return $product 
         ? ['item_type' => $product['item_type'], 'product_name' => $product['product_name']] 

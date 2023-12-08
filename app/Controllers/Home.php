@@ -19,11 +19,8 @@ class Home extends BaseController
     public function index()
     {
         //return view('products/products_index');
-       return view('products/table');
+       return view('dashboard/products_dash');
       // return view('dash');
-
-
-      
     }
     public function products()
     {
@@ -35,6 +32,25 @@ class Home extends BaseController
         return view('dashboard/sales_dash');
 
     }
+    public function react()
+    {
+        return view('react');
 
+    }
+    public function itemTypes()
+    {
+        return view('dashboard/item_types');
+
+    }
+    public function productQuantities()
+    {
+        return view('dashboard/product_stock');
+
+    }
+    public function productPrices()
+    {
+        return view('dashboard/product_prices');
+
+    }
 }
     

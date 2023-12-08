@@ -4,12 +4,18 @@
         <div class="quixnav">
             <div class="quixnav-scroll">
                 <ul class="metismenu" id="menu">
-                    <li class="nav-label first">Mainss Menu</li>
+                    <li class="nav-label first">Main Menu</li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon icon-single-04"></i><span class="nav-text">Dashboard</span></a>
                         <ul aria-expanded="false">
                             <li><a href="<?= base_url('loadSales') ?>">Sales</a></li>
                             <li><a href="<?= base_url('loadProducts') ?>">Products</a></li>
+                            <li><a href="<?= base_url('loadItemTypes') ?>">Item Types</a></li>       
+                            <li><a href="<?= base_url('loadProductQuantities') ?>">Stock</a></li>
+                            <li><a href="<?= base_url('loadProductPrices') ?>">Prices</a></li>
+
+
+
                         </ul>
                     </li>
                     <li class="nav-label">Apps</li>

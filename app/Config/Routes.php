@@ -9,8 +9,13 @@ use CodeIgniter\Router\RouteCollection;
 //Users
 $routes->get('/', 'Home::index');
 $routes->get('/loadProducts', 'Home::products');
+$routes->get('/loadItemTypes', 'Home::itemTypes');
 $routes->get('/loadSales', 'Home::sales');
+$routes->get('/loadProductQuantities', 'Home::productQuantities');
+$routes->get('/loadProductPrices', 'Home::productPrices');
 $routes->get('/users', 'Users::index');
+$routes->get('/react', 'Home::react');
+
 
 $routes->group('api', ['filter' => 'cors'], function ($routes) {
     // Your API routes go here...
@@ -43,7 +48,14 @@ $routes->delete('/sales/delete/(:segment)', 'Sales::delete/$1');
 //Prices
 $routes->get('/prices', 'Prices::index');
 $routes->post('/prices/add', 'Prices::create');
-$routes->get('/prices/show/(:segment)', 'Prices::show/$1');
-$routes->post('/prices/edit/(:segment)', 'Prices::update/$1');
+$routes->get('/prices/show', 'Prices::show');
+$routes->post('/prices/edit', 'Prices::update');
 $routes->delete('/prices/delete/(:segment)', 'Prices::delete/$1');
+
+//Quantities
+$routes->get('/quantities', 'ProductsStock::index');
+$routes->post('/quantities/add', 'ProductsStock::create');
+$routes->get('/quantities/show/(:segment)', 'Prices::show/$1');
+$routes->post('/quantities/edit/(:segment)', 'Prices::update/$1');
+$routes->delete('/quantities/delete/(:segment)', 'Prices::delete/$1');
 

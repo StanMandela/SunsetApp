@@ -16,11 +16,11 @@ new Vue({
   el: "#app",
   data: {
     sales: [],
+    itemTypes:[],
     products: [],
-    message: "Sales Page",
-    selectedProductId: "",
-    saleQuantity: "",
-    productDesc: "",
+    message: "Item Types Page",
+    type_name: "",
+    description: "",
     response: {
       status: null,
       message: '',
@@ -51,16 +51,16 @@ new Vue({
       var responseDiv = document.getElementById('responseDiv');
       responseDiv.style.display = 'none';
     },
-    submitSale() {
+    submitItemType() {
       // Prepare data to send to the API
       // Your Vue.js function
       const formData = new FormData();
-      formData.append('product_id', this.selectedProductId);
-      formData.append('quantity', this.saleQuantity);
-
+      formData.append('description', this.description);
+      formData.append('type_name', this.type_name);
+    
      
       // Replace this URL with your actual API endpoint
-      const apiUrl = baseURL + "/sales/add";
+      const apiUrl = baseURL + "/itemtype/add";
 
       // Using the fetch API to make a POST request
       fetch(apiUrl, {
@@ -85,12 +85,12 @@ new Vue({
         });
     },
     populateTable() {
-      fetch(baseURL + "/sales")
+      fetch(baseURL + "/itemtypes")
         .then((response) => response.json())
         .then((data) => {
           // Update the products data
-          this.sales = data;
-          console.log('sales'.data);
+          this.itemTypes = data;
+          console.log('Item Types'.data);
         });
     },
     populateProducts() {

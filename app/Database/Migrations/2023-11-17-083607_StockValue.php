@@ -6,8 +6,10 @@ use CodeIgniter\Database\Migration;
 
 class DailyBizValue extends Migration
 {
+    protected $group = 'default';
     public function up()
     {
+   
         $this->forge->addField([
             'id' => [
                 'type'           => 'INT',

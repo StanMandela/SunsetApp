@@ -69,6 +69,10 @@
 
     <!-- All init script -->
     <script src="../../assets/js/plugins-init/toastr-init.js"></script>
+    
+    <!-- React script -->
+    <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
 
 </body>
 

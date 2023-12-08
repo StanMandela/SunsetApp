@@ -12,7 +12,7 @@ class ItemTypeModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['type_id','type_name','description'];
+    protected $allowedFields    = ['type_id','type_name','description','created_at'];
 
     // Dates
     protected $useTimestamps = false;

@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class PricesModel extends Model
+class ProductsStockModel extends Model
 {
-    protected $table            = 'prices';
+    protected $table            = 'products_stock';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['product_id','current_price','previous_price','from_date','to_date','updated_on'];
+    protected $allowedFields    = ['product_id','quantity','latest_action','updated_on'];
 
     // Dates
     protected $useTimestamps = false;
@@ -27,19 +27,10 @@ class PricesModel extends Model
             'label' => 'Product Id',
             'rules' => 'required|greater_than_equal_to[0]'
         ],
-        'current_price' => [
-            'label' => 'Current Price',
-            'rules' => 'required|greater_than_equal_to[0]'
-        ],
-        'from_date' => [
-            'label' => 'From Date',
-            'rules' => 'required'
-        ],
-        'updated_on' => [
-            'label' => 'Updated on ',
-            'rules' => 'required'
-        ],
-      
+        'quantity' => [
+            'label' => 'quantity',
+            'rules' => 'required|max_length[250]'
+        ]
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;

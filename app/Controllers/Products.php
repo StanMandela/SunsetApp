@@ -18,8 +18,11 @@ class Products extends BaseController
     public function index()
     {
         $this->model = new ProductsModel();
-        $items=$this->model->findAll();
-        return $this->response->setJSON($items);
+        $query= $this->model->select('products.*,item_types.type_name')
+                            ->join('item_types','item_types.type_id=products.item_type')
+                            ->get();
+                            $result = $query->getResult();
+        return $this->response->setJSON($result);
     }
  
     /**

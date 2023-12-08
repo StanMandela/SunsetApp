@@ -7,14 +7,18 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Focus - Bootstrap Admin Dashboard </title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url('assets/images/favicon.png');?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url('assets/images/favicon.png'); ?>">
     <link rel="stylesheet" href="../../assets/vendor/owl-carousel/css/owl.carousel.min.css">
     <link rel="stylesheet" href="../../assets/vendor/owl-carousel/css/owl.theme.default.min.css">
     <link href="../../assets/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
-     <!-- Datatable -->
-     <link href="../../assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
-   <!-- Toastr -->
-   <link rel="stylesheet" href="../../assets/vendor/toastr/css/toastr.min.css">
+    <!-- Datatable -->
+    <link href="../../assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="../../assets/vendor/toastr/css/toastr.min.css">
+
+    <!-- React -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 
     <link href="../../assets/css/style.css" rel="stylesheet">
 
@@ -97,8 +101,8 @@
                                         <li class="media dropdown-item">
                                             <span class="success"><i class="ti-user"></i></span>
                                             <div class="media-body">
-                                            <?php echo base_url('assets/images/favicon.png');?>
-                                                <img src="<?= base_url()?>/assets/images/favicon.png" alt="image">
+                                                <?php echo base_url('assets/images/favicon.png'); ?>
+                                                <img src="<?= base_url() ?>/assets/images/favicon.png" alt="image">
                                                 <a href="#">
                                                     <p><strong>Martin</strong> has added a <strong>customer</strong> Successfully
                                                     </p>
@@ -145,8 +149,7 @@
                                             <span class="notify-time">3:20 am</span>
                                         </li>
                                     </ul>
-                                    <a class="all-notification" href="#">See all notifications <i
-                                            class="ti-arrow-right"></i></a>
+                                    <a class="all-notification" href="#">See all notifications <i class="ti-arrow-right"></i></a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown header-profile">
@@ -176,4 +179,3 @@
         <!--**********************************
             Header end ti-comment-alt
         ***********************************-->
-

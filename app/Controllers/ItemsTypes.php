@@ -36,11 +36,12 @@ class ItemsTypes extends BaseController
 
          // Increment the item_id
          $newItemId = $lastItemId + 1 ?? 1 ;
-
+         $timestamp = date('Y-m-d h:i:s');
         $data =[   
             'description'    => $this->request->getPost('description'),
             'type_name'    => $this->request->getPost('type_name'),
-            'type_id'    => $newItemId,            
+            'type_id'    => $newItemId, 
+            'created_at' => $timestamp
         ];
          
         if ($model->insert($data) === false)

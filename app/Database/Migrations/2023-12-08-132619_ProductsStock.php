@@ -4,51 +4,42 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Users extends Migration
+class ProductsStock extends Migration
 {
-    protected $group = 'default';
-
     public function up()
     {
-
+        
         $this->forge->addField([
             'id' => [
                 'type'           => 'INT',
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'email' => [
+            'product_id' => [
                 'type'           => 'VARCHAR',
                 'constraint'     => 64,
             ],
-            'first_name' => [
-                'type'           => 'VARCHAR',
-                'constraint'     => 64,
-            ],
-            'second_name' => [
-                'type'           => 'VARCHAR',
-                'constraint'     => 64,
-            ],
-            'password' => [
-                'type'           => 'VARCHAR',
-                'constraint'     => 32,
-            ],
-            'user_type' => [
+            'quantity' => [
                 'type'           => 'INT',
                 'default'        => '0',
             ],
-            'login_at' => [
+            'latest_action' => [
+                'type'           => 'VARCHAR',
+                'constraint'     => 64,
+            ],
+            'updated_on' => [
                 'type'           => 'DATETIME',
                 'null'           => true,
             ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->addUniqueKey(['email']);
-        $this->forge->createTable('users');
+        $this->forge->addUniqueKey(['product_id']);
+        $this->forge->createTable('products_stock');
     }
 
     public function down()
     {
-        $this->forge->dropTable('users'); 
+        $this->forge->dropTable('products_stock'); 
+
     }
 }

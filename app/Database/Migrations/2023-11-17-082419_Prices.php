@@ -6,6 +6,8 @@ use CodeIgniter\Database\Migration;
 
 class Prices extends Migration
 {
+    protected $group = 'default';
+    
     public function up()
     {
         $this->forge->addField([
@@ -18,7 +20,11 @@ class Prices extends Migration
                 'type'           => 'INT',
                 'default'        => '0',
             ],
-            'price' => [
+            'previous_price' => [
+                'type'           => 'INT',
+                'default'        => '0',
+            ],
+            'current_price' => [
                 'type'           => 'INT',
                 'default'        => '0',
             ],

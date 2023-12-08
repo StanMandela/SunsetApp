@@ -6,8 +6,10 @@ use CodeIgniter\Database\Migration;
 
 class ItemTypes extends Migration
 {
+    protected $group = 'default';
     public function up()
     {
+
         $this->forge->addField([
             'id' => [
                 'type'           => 'INT',
@@ -34,7 +36,7 @@ class ItemTypes extends Migration
         $this->forge->addKey('id', true);
         $this->forge->addUniqueKey(['type_id']);
         $this->forge->createTable('item_types');
-        
+    
     }
 
     public function down()
