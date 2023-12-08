@@ -5,6 +5,8 @@ namespace App\Services;
 use App\Controllers\Prices;
 use App\Controllers\ProductsStock;
 use App\Models\ProductsStockModel; 
+use App\Models\DailyQuantiesModel; 
+
 
 class Services 
 {
@@ -25,15 +27,13 @@ class Services
         
     }
     public function updateDailyQuantities($data){
-        $model = new ProductsStockModel();
+        $productsStockModel = new ProductsStockModel();
         $productController = new ProductsStock();
+        $dailyQuantiesModel = new DailyQuantiesModel();
 
-        $timestamp = date('Y-m-d h:i:s')   ;
-        // if ($pricesModel->insert($data) === false) {
-        //     $message= $pricesModel->errors();
-        //     return $message->message;
-        // }
-       
+
+
+        $timestamp = date('Y-m-d h:i:s')   ; 
       
         if($data['action_type'] ==="sales"){
             // Calculate the total_quantity
@@ -45,10 +45,25 @@ class Services
 
         $data["updated_at"]=$timestamp;
       
-        //update the new total quantity 
-        $price= $productController->update($data);
-        return $price;
-        //$status=$model->insert($data);
+        //update the new total quantity in Product Stock
+        $stockUpdate= $productController->update($data);
+        return $stockUpdate;
+
+        if($stockUpdate === false){
+            return false;
+        }
+        // $status=$productsStockModel->insert($data);
+         if ($dailyQuantiesModel->insert($data) === false)
+         {
+             //return redirect()->back()->withInput()->with('errors', $this->model->errors());
+             $message= $dailyQuantiesModel->errors();
+             $error= array(
+                 "status"=> 201,
+                 "message"=>$message
+             );
+             return $error;
+         }
+        return "Yes";
 
     }
 }

@@ -33,8 +33,8 @@ class DailyItemQuanties extends Migration
                 'constraint'     => '0',
             ],
             'action_type' => [
-                'type'           => 'INT',
-                'default'        => '0',
+                'type'           => 'VARCHAR',
+                'constraint'     => 64,
             ],
             'updated_at' => [
                 'type'        => 'DATETIME',

@@ -79,7 +79,6 @@ class ProductsStock extends BaseController
         $model = new ProductsStockModel();
         $timestamp = date('Y-m-d h:i:s')   ;
 
-      
         if($data){
             
             $updateData = [   

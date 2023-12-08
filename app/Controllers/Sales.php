@@ -146,29 +146,38 @@ class Sales extends BaseController
 
             ];
 
-            // if ($this->model->insert($data) === false) {
-            //     return redirect()->back()->withInput()->with('errors', $this->model->errors());
-            //     $message = $this->model->errors();
-            //     $error = array(
-            //         "status" => 201,
-            //         "message" => $message
-            //     );
-            //     return $this->response->setJSON($error);
-            // }
+            if ($this->model->insert($data) === false) {
+                return redirect()->back()->withInput()->with('errors', $this->model->errors());
+                $message = $this->model->errors();
+                $error = array(
+                    "status" => 201,
+                    "message" => $message
+                );
+                return $this->response->setJSON($error);
+            }
             $updatedata=[
                 "old_quantity"=>$productStock->quantity ,
-                "action_type"=>'restock',
+                "action_type"=>'sales',
                 'product_id'    => $this->request->getPost('product_id'),
                 'new_quantity'    => $this->request->getPost('quantity'),
             ];
             $status = $services->updateDailyQuantities($updatedata);
 
-            //return redirect()->back()->with('success', 'Saved Successfully!');
+
             $data = array(
                 "status" => 200,
                 "message" => "Sale saved Successfully!"
             );
-            return $this->response->setJSON($status);
+
+            if($status===true){
+                $data["product_stock"] = "Successfully updated";
+
+            }else{
+                $data["product_stock"] = "Error updating";
+
+            }
+            
+             return $this->response->setJSON($data);
         }
     }
     // Function to extract the value of the first key
