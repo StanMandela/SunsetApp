@@ -40,7 +40,6 @@
                     <div class="card-header">
                         <h4 class="card-title">Item Types Datatable</h4>
                     </div>
-                    {{prices}}
                     <div class="card-body">
                         <div class="table-responsive">
                             <table id="example" class="display" style="min-width: 845px">
@@ -52,6 +51,7 @@
                                         <th>Previous Price</th>
                                         <th>From Date</th>
                                         <th>Updated On</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -77,7 +77,7 @@
                                         <th>Previous Price</th>
                                         <th>From Date</th>
                                         <th>Updated On</th>
-                                        <th></th>
+                                        <th>Actions</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -164,7 +164,6 @@
 
 
                                     <div class="form-group row">
-                                    <input  type="text"  class="form-control" placeholder="product_id" name="selectedProductId" id="modalData.product_id" v-model="editselectedProductId" >    
 
                                         <div class="col-sm-2">Product Name</div>
                                         <div class="col-sm-10">

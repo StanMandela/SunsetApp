@@ -90,17 +90,6 @@
                         <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                         </button>
                     </div>
-
-                    <!-- <div id="responseDiv" style="display: none;" class="alert alert-success alert-dismissible alert-alt solid fade " id="alert" >
-                        <button type="button" class="close h-100" onclick="hideResponseDiv()" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
-                        </button>
-                        <p id="responseMessage"></p>
-                    </div>
-                    <div class="alert alert-success alert-dismissible alert-alt solid fade" id="alert" v-else hidden>
-                        <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
-                        </button>
-                        <strong>Success!</strong> Message has been sent.
-                    </div> -->
                     <div id="responseDiv" style="display: none;" class="alert alert-success alert-dismissible alert-alt solid fade show">
                         <button type="button" class="close" onclick="hideResponseDiv()" aria-label="Close">
                             <span aria-hidden="true">&times;</span>

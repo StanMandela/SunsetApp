@@ -20,7 +20,6 @@ class Sales extends BaseController
     {
         // Load the model in the constructor
         $this->model = new SalesModel();
-        $this->priceController = new Prices();
     }
     public function index()
     {

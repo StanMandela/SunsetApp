@@ -10,11 +10,11 @@ use App\Models\DailyQuantiesModel;
 
 class Services 
 {
-    protected $pricesModel;
+    protected $pricesController;
 
     public function __construct()
     {
-        $this->pricesModel = new Prices();
+        $this->pricesController = new Prices();
     }
 
     public function showPrice($productId)
@@ -24,6 +24,7 @@ class Services
          $pricesModel = new Prices();
          $price= $pricesModel->show($productId);
         return $price;
+
         
     }
     public function updateDailyQuantities($data){

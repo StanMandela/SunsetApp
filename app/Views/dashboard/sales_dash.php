@@ -10,7 +10,7 @@
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
                     <h4>{{message}}</h4>
-             
+
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -71,7 +71,7 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                    <th>#</th>
+                                        <th>#</th>
                                         <th>Product Name</th>
                                         <th>Description</th>
                                         <th>Quantity</th>
@@ -122,8 +122,6 @@
 
                             <div class="basic-form">
                                 <form @submit.prevent="submitForm">
-                                   
-                                    {{products}}
                                     <div class="form-group row">
 
                                         <div class="col-sm-2">Item Name</div>

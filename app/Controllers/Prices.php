@@ -96,9 +96,13 @@ class Prices extends BaseController
 
         //get the id param from request
        // $id = $this->request->getGet('id')?? null;
+       $query = $model->select('current_price')
+                ->where('product_id', $id)
+                ->where('to_date', null)
+                ->get();
 
         // Build the query
-        $query = $model->query("SELECT current_price FROM prices WHERE product_id = ?", $id);
+        //$query = $model->query("SELECT current_price FROM prices WHERE product_id = ?", $id);
 
         if ($query->resultID->num_rows > 0) {
             $result = $query->getResult();
@@ -177,11 +181,6 @@ class Prices extends BaseController
         
         
         // Retrieve the last record for the specified product ID
-     
-    
-
-       
-
         return false; // Handle the case where no previous record is found
     }
 }

@@ -20,7 +20,6 @@ new Vue({
     products: [],
     message: "Product Prices",
     selectedProductId: "",
-    editselectedProductId: "",
     editedPrice: "",
     price: [],
     response: {

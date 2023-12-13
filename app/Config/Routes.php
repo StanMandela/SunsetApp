@@ -15,6 +15,11 @@ $routes->get('/loadProductQuantities', 'Home::productQuantities');
 $routes->get('/loadProductPrices', 'Home::productPrices');
 $routes->get('/users', 'Users::index');
 $routes->get('/react', 'Home::react');
+$routes->get('/pic', 'Home::picPage');
+$routes->post('/fileUpload', 'Home::uploadFile');
+
+
+
 
 
 $routes->group('api', ['filter' => 'cors'], function ($routes) {
@@ -55,7 +60,13 @@ $routes->delete('/prices/delete/(:segment)', 'Prices::delete/$1');
 //Quantities
 $routes->get('/quantities', 'ProductsStock::index');
 $routes->post('/quantities/add', 'ProductsStock::create');
-$routes->get('/quantities/show/(:segment)', 'Prices::show/$1');
-$routes->post('/quantities/edit/(:segment)', 'Prices::update/$1');
-$routes->delete('/quantities/delete/(:segment)', 'Prices::delete/$1');
+$routes->get('/quantities/show/(:segment)', 'ProductsStock::show/$1');
+$routes->post('/quantities/edit', 'ProductsStock::update');
+$routes->delete('/quantities/delete/(:segment)', 'ProductsStock::delete/$1');
+$routes->get('/quantities/getStockValue', 'ProductsStock::calculateStockValue/$1');
+$routes->get('/quantities/stockValue', 'ProductsStock::getStockValue');
+$routes->post('/quantities/ediStockValue', 'ProductsStock::editStockValue');
+$routes->post('/quantities/fileUpload', 'ProductsStock::uploadFile');
+
+
 

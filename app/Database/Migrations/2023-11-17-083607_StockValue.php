@@ -16,6 +16,10 @@ class DailyBizValue extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
+            'date' => [
+                'type'           => 'DATETIME',
+                'null'           => false,
+            ],
             'mpesa_balance' => [
                 'type'           => 'INT',
                 'default'        => '0',
@@ -38,6 +42,7 @@ class DailyBizValue extends Migration
             ],
         ]);
         $this->forge->addKey('id', true);
+        $this->forge->addUniqueKey(['date']);
         $this->forge->createTable('stock_value');
     }
 
