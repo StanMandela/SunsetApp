@@ -24,7 +24,7 @@ class DailyItemQuanties extends Migration
                 'type'           => 'INT',
                 'constraint'     => '0',
             ],
-            'new_quantity' => [
+            'quantity' => [
                 'type'           => 'INT',
                 'constraint'     => '0',
             ],

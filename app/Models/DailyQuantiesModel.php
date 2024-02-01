@@ -12,7 +12,7 @@ class DailyQuantiesModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['product_id','old_quantity','new_quantity','total_quantity','action_type','updated_at'];
+    protected $allowedFields    = ['product_id','old_quantity','quantity','total_quantity','action_type','updated_at'];
 
     // Dates
     protected $useTimestamps = false;
@@ -31,8 +31,8 @@ class DailyQuantiesModel extends Model
             'label' => 'Old Quantity',
             'rules' => 'required|greater_than_equal_to[0]'
         ],
-        'new_quantity' => [
-            'label' => 'New Quantity',
+        'quantity' => [
+            'label' => 'Quantity',
             'rules' => 'required|greater_than_equal_to[0]'
         ],
         'action_type' => [

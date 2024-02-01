@@ -80,7 +80,7 @@ class Sales extends BaseController
         }
         // Get the name of the product getProductType
         $product = $productModel->getProductDetails($this->request->getPost('product_id')) ?? null;
-
+     
         if ($product === null) {
 
             $data = array(
@@ -93,10 +93,20 @@ class Sales extends BaseController
         //check if the sale is more than the quantity in stock
         $query = $stockModel->select('quantity')
             ->where('product_id', $productId)
-            ->orderBy('id', 'DESC')  // Assuming 'id' is your primary key; adjust as needed
+            ->orderBy('id', 'DESC')  
             ->limit(1)
             ->get();
         $productStock = $query->getRow();
+      
+        if($productStock ===null || !isset($productStock)){
+            $data = array(
+                "status" => FALSE,
+                "code" => 200,
+                "message" => "Can't make a sale of ".$product['product_name']." with no stock "
+            );
+            return $this->response->setJSON($data);
+        }
+        
         if ($productStock->quantity < $this->request->getPost('quantity')) {
             $data = array(
                 "status" => FALSE,
@@ -132,7 +142,7 @@ class Sales extends BaseController
                 return $this->response->setJSON($error);
             }
 
-           
+            //Calculate Sale Amount
             $amount = $this->request->getPost('quantity') * $price['price'];
 
             $data = [
@@ -144,8 +154,22 @@ class Sales extends BaseController
                 'amount' => $amount
 
             ];
+ 
+            $updatedata=[
+                "old_quantity"=>$productStock->quantity ,
+                "action_type"=>'sales',
+                'product_id'    => $this->request->getPost('product_id'),
+                'quantity'    => $this->request->getPost('quantity'),
+            ];
+            
+            $status = $services->updateDailyQuantities($updatedata);
+           
+            
+            
 
-            if ($this->model->insert($data) === false) {
+            if($status===true){
+                //insert sale to the Sales table
+                if ($this->model->insert($data) === false) {
                 return redirect()->back()->withInput()->with('errors', $this->model->errors());
                 $message = $this->model->errors();
                 $error = array(
@@ -153,30 +177,35 @@ class Sales extends BaseController
                     "message" => $message
                 );
                 return $this->response->setJSON($error);
+                 }
+                $data["product_stock"] = $product['product_name']. "Successfully updated";
+                $data = array(
+                    "status" => 200,
+                    "message" => "Sale saved Successfully!"
+                );
+    
+                return $this->response->setJSON($data);
+
+            }elseif($status===false){
+               
+                $data = array(
+                    "status" => 200,
+                    "message" => "Error Recording daily sales!"
+                );
+                $data["product_stock"] = "Duplicate Sale? Check if this Item Has been sold already";
+                return $this->response->setJSON($data);
             }
-            $updatedata=[
-                "old_quantity"=>$productStock->quantity ,
-                "action_type"=>'sales',
-                'product_id'    => $this->request->getPost('product_id'),
-                'new_quantity'    => $this->request->getPost('quantity'),
-            ];
-            $status = $services->updateDailyQuantities($updatedata);
-
-
-            $data = array(
-                "status" => 200,
-                "message" => "Sale saved Successfully!"
-            );
-
-            if($status===true){
-                $data["product_stock"] = "Successfully updated";
-
-            }else{
-                $data["product_stock"] = "Error updating";
+            else{
+                
+                $data = array(
+                    "status" => 200,
+                    "message" => "Error Recording daily sales"
+                );
+                $data["product_stock"] = "Error updating". $product['product_name'];
+                return $this->response->setJSON($data);
 
             }
             
-             return $this->response->setJSON($data);
         }
     }
     // Function to extract the value of the first key

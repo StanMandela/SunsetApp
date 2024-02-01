@@ -48,7 +48,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                        <table id="example2" class="display" style="min-width: 845px">
+                        <table id="example" class="display" style="min-width: 845px">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -98,7 +98,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                        <table id="example" class="display" style="min-width: 845px">
+                        <table id="example2" class="display" style="min-width: 845px">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -176,7 +176,7 @@
                                         <div class="col-sm-10">
                                             <select id="inputState" class="form-control" v-model="selectedProductId">
                                                 <option value="" disabled selected>Choose item</option>
-                                                <option v-for="product in productsItems" :key="product.product_id" :value="product.product_id" :id="'option_' + product.product_id">
+                                                <option v-for="product in productsDropDown" :key="product.product_id" :value="product.product_id" :id="'option_' + product.product_id">
                                                     {{ product.product_name }}
                                                 </option>
                                             </select>
@@ -370,5 +370,5 @@
         ***********************************-->
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-<script type="text/javascript" src="../../assets/vue/prodcutsStock.js"></script>
+<script type="text/javascript" src="../../assets/vue/productsStock.js"></script>
 <?php include(APPPATH . 'Views/template/footer.php'); ?>

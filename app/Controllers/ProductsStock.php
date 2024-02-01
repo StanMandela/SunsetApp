@@ -79,62 +79,106 @@ class ProductsStock extends BaseController
         return $this->response->setJSON($error);
     }
 
-    public function update()
+    public function update($postData = null)
     {
+
+    
         $model = new ProductsStockModel();
         $timestamp = date('Y-m-d h:i:s');
         $today = date('Y-m-d');
-        $data = [];
+        $data = $postData ?? $this->request->getPost();
 
-        $productId = $this->request->getPost('product_id');
-        $newStock = $this->request->getPost('new_stock');
-        $productName = $this->request->getPost('product_name');
-
+        if ($postData) {
+            $productId = $postData['product_id'];
+            $newStock = $postData['quantity'];
+            $lastAction = $postData['action_type'];
+        } else {
+            $productId = $this->request->getPost('product_id');
+            $newStock = $this->request->getPost('new_stock');
+            $lastAction = $this->request->getPost('action_type');
+        }
 
         $query = $model->select('*')
-            ->where('product_id', $productId)
-            //  ->where('updated_on', $timestamp)
-            ->orderBy('id', 'DESC')  // Assuming 'id' is your primary key; adjust as needed
+            ->where('products_stock.product_id', $productId)
+            ->join('products', 'products_stock.product_id=products.product_id')
+            ->orderBy('products_stock.id', 'DESC')  // Assuming 'id' is your primary key; adjust as needed
             ->limit(1)
             ->get();
         $productStock = $query->getRow();
         $dbDate =  date('Y-m-d', strtotime($productStock->updated_on));
-        if ($dbDate === $today && $productStock->latest_action === 'restock') {
+      
+        if ($dbDate === $today && strval($productStock->latest_action) ===  strval($lastAction)) {
             //if last action is sales we can edit stock and if 
             $data = array(
                 "code" => 200,
                 "status" => false,
                 "product_id" => $productId,
-                "message" => "Already Restocked " . $productName . "for today."
+                "message" => "Already Restocked " . $productStock->product_name . "for today."
             );
             return $this->response->setJSON($data);
-        } else {
-            //
-            $updateData = [
-                'quantity'    => $productStock->quantity + $newStock,
-                'latest_action'    => "restock",
-                'updated_on'    => $timestamp
-            ];
+        } elseif ($dbDate === $today && $productStock->latest_action === 'sales') {
+            //if last action is sales we can edit stock and if 
+            $data = array(
+                "code" => 200,
+                "status" => false,
+                "product_id" => $productId,
+                "message" => "Already Recorded  " . $productStock->product_name . " Sales for today."
+            );
+            return $this->response->setJSON($data);
+        }
+       
+        else {
+            // we need to cheeck if its a sale , then return a normal response
+            if ($postData) {
+                $updateData = [
+                    'quantity'    => $newStock,
+                    'latest_action'    => "sales",
+                    'updated_on'    => $timestamp,
+                    'action'=> $lastAction
+                   
+                ];
+            } else {
+                $updateData = [
+                    'quantity'    => $productStock->quantity + $newStock,
+                    'latest_action'    => "restock",
+                    'updated_on'    => $timestamp,
+                    'action'=> $lastAction
+                ];
+            }
 
-
-
+           
             // get the last quantity 
 
 
-            if ($model->where('product_id', $productId)->set($updateData)->update() === false) {
-                $message = $this->model->errors();
-                $error = array(
-                    "status" => 201,
-                    "message" => $message
-                );
-                return false;
+            if ($model->where('product_id', '3455')->set($updateData)->update() === false) {
+                
+                if ($updateData['latest_action'] === 'restock') {
+                    $messages = $this->model->errors();
+                    //check if its retock->
+                    $message = array(
+                        "status" => 201,
+                        "message" => $messages
+                    );
+                    return $this->response->setJSON($message);
+                } else {
+                    return true;
+                }
+               
             }
-
+           
+            if ($updateData['latest_action'] === 'restock') {
             $data = array(
                 "status" => 200,
-                "message" => $productName . "Updated Successfully!"
+                "message" => $productStock->product_name . " Restocking Updated Successfully!"
             );
             return $this->response->setJSON($data);
+            }elseif($updateData['latest_action'] === 'sales'){
+                $data = array(
+                    "status" => 200,
+                    "message" => $productStock->product_name . "Sale Updated Successfully!"
+                );
+            return $data;
+            }
         }
     }
     public function calculateStockValue($date)

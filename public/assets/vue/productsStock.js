@@ -18,6 +18,7 @@ new Vue({
     stockModalData: null,
     modalData: null,
     productsItems: [],
+    productsDropDown:[],
     products: [],
     stockValue: [],
     message: "Stock Page",
@@ -31,6 +32,7 @@ new Vue({
   },
   mounted() {
     this.populateTable();
+    this.populateProductDropDown();
     this.populateStockValue();
   },
   methods: {
@@ -234,6 +236,14 @@ new Vue({
         .then((data) => {
           // Update the products data
           this.productsItems = data;
+        });
+    },
+    populateProductDropDown() {
+      fetch(baseURL + "/products")
+        .then((response) => response.json())
+        .then((data) => {
+          // Update the products data
+          this.productsDropDown = data;
         });
     },
     populateStockValue() {
