@@ -99,6 +99,57 @@ or write  full path to the file
 * 87acf21 second commit
 * 5662bb5 first commit
 ```
+**Answer**
+The steps taken to achive the above Git commit graph are as follows:
+
+ Step 1 : Initalize a new Git repository and create a file to track 
+```
+    git init 
+    sudo touch file.txt
+```
+ Step 2: Make the first commit on the master branch
+```
+echo "First commit" > file.txt
+git add file.txt
+git commit -m "first commit"
+```
+
+ Step 3: Make the second commit on the master branch
+```
+echo "Second commit" >> file.txt
+git add file.txt
+git commit -m "second commit"
+```
+ Step 4: Make the third commit on the master branch
+```
+echo "Third commit" >> file.txt
+git add file.txt
+git commit -m "third commit"
+```
+ Step 5: Create a new branch (feature-branch) from the second commit
+```
+git checkout -b feature-branch HEAD~1
+```
+ Step 6: Make a commit on the feature-branch
+```
+touch feature.text
+echo "Awesome feature" > feature.txt
+git add feature.txt
+git commit -m "awesome feature"
+```
+ Step 7: Merge the feature-branch into master
+```
+git checkout master
+git merge feature-branch -m "Merge"
+```
+
+ Step 8: Make the fourth commit on the master branch
+```
+echo "Fourth commit" >> file.txt
+git add file.txt
+git commit -m "fourth commit"
+```
+
 
 1. GitLab has hired you to write a Git tutorial for beginners on this topic:
 
