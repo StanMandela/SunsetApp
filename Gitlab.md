@@ -128,7 +128,7 @@ git commit -m "third commit"
 ```
  Step 5: Create a new branch (feature-branch) from the second commit
 ```
-git checkout -b feature-branch HEAD~1
+git checkout -b feature-branch 
 ```
  Step 6: Make a commit on the feature-branch
 ```
