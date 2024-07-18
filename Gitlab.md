@@ -18,6 +18,7 @@
    .
    ```
    **Answer 1**
+   
 create a bash file  call it list_users.sh uisng the command below
 ```
 nano list_users.sh
