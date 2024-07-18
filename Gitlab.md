@@ -18,28 +18,32 @@
    .
    ```
    **Answer 1**
-     create a bash file  call it list_users.sh inside it paste the code below
-  ```
-  #!/bin/bash
-  
-  # Read the /etc/passwd file
-  while IFS=: read -r username _ _ _ _ homedir _; do
-    # Print the username and home directory in the desired format
-    echo "${username}:${homedir}"
-  done < /etc/passwd
-  ```
-   save the file and execute the command below to make it executable
-   ```
-   chmod +x list_users.sh
-   ```
-   to run the file if you are in the same directory as the script
-   ```
-   ./list_users.sh
-  ```
-  or write  full path to the file 
-  ```
-  /path_to_file/list_users.sh
-  ```
+create a bash file  call it list_users.sh uisng the command below
+```
+nano list_users.sh
+```
+Inside it paste the code below
+```
+#!/bin/bash
+
+# Read the /etc/passwd file
+while IFS=: read -r username _ _ _ _ homedir _; do
+  # Print the username and home directory in the desired format
+  echo "${username}:${homedir}"
+done < /etc/passwd
+```
+ save the file and execute the command below to make it executable
+ ```
+ chmod +x list_users.sh
+ ```
+ to run the file if you are in the same directory as the script
+ ```
+ ./list_users.sh
+```
+or write  full path to the file 
+```
+/path_to_file/list_users.sh
+```
   
    **Answer 2**
    
