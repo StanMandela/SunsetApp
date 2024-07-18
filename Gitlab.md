@@ -104,8 +104,8 @@ The steps taken to achive the above Git commit graph are as follows:
 
  Step 1 : Initalize a new Git repository and create a file to track 
 ```
-    git init 
-    sudo touch file.txt
+  git init 
+  sudo touch file.txt
 ```
  Step 2: Make the first commit on the master branch
 ```
